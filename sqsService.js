@@ -3,6 +3,12 @@ var sqs = new AWS.SQS();
 AWS.config.apiVersions = {
     sqs: '2012-11-05',
 };
+AWS.config.update({
+    region: 'eu-west-1',
+    accessKeyId: 'XXXXX',
+    secretAccessKey: 'XXXX'
+  });
+  
 const uuid = require('uuid');
 const params = {  
     QueueUrl: "XXXXX"

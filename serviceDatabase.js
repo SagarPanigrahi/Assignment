@@ -1,18 +1,24 @@
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB();
 const logger = require('./loggerFunction');
+AWS.config.update({
+    region: 'eu-west-1',
+    accessKeyId: 'XXXXX',
+    secretAccessKey: 'XXXX'
+});
+
 const documentClient = new AWS.DynamoDB.DocumentClient({
     apiVersion: '2012-08-10'
 });
 
-const createUser = (body) =>{
+const createUser = (body) => {
     const params = {
         TableName: "User",
-        Key: { 
+        Key: {
             name: body.name,
             age: body.age,
             sex: body.sex
-         }
+        }
     };
     try {
         logger.logInfo(params)
@@ -24,6 +30,6 @@ const createUser = (body) =>{
     }
 }
 
-module.exports={
+module.exports = {
     createUser
 }
